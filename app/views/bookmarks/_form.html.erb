@@ -1,0 +1,15 @@
+<%= simple_form_for([@list, @bookmark]) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form">
+    <h3>Comment</h3>
+    <%= f.input_field :comment, placeholder: "Comment", class: 'field' %>
+    <h3>Movie</h3>
+    <%= f.association :movie %>
+    <p>Add Image</p>
+    <%= f.button :submit, class: "btn-primary" %>
+  </div>
+
+
+<% end %>

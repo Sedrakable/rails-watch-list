@@ -1,0 +1,13 @@
+<%= simple_form_for(@list) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form">
+    <h3>List Name</h3>
+    <%= f.input_field :name, placeholder: "Favorites", class: 'field' %>
+    <p>Add Image</p>
+    <%= f.button :submit, class: "btn-primary" %>
+  </div>
+
+
+<% end %>

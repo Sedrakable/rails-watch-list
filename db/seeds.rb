@@ -7,25 +7,31 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 puts "starterd"
-def create
-  l = List.create!(name: Faker::Book.genre)
-  m = Movie.create!(title: Faker::Movie.title, overview: Faker::Restaurant.description, poster_url: 'https://source.unsplash.com/random/900×700/?movie', rating: rand(0.0..1.0))
-  Bookmark.create!(comment: Faker::Food.ethnic_category, movie: m, list: l)
+List.destroy_all
+Movie.destroy_all
+Bookmark.destroy_all
 
-end
-
-14.times do
-  # begin
-
-  # rescue TypeError
-  # end
-
+def create_1
   begin
-    create
+    List.create!(name: Faker::Book.genre)
+    Movie.create!(title: Faker::Movie.title, overview: Faker::Restaurant.description, poster_url: 'https://source.unsplash.com/random/900×700/?movie', rating: rand(0.0..1.0))
   rescue ActiveRecord::RecordInvalid => invalid
     puts invalid.record.errors
+    # create
   end
 end
+
+def create_2
+  begin
+    Bookmark.create!(comment: Faker::Food.ethnic_category, movie: Movie.all.sample, list: List.all.sample)
+  rescue ActiveRecord::RecordInvalid => invalid
+    puts invalid.record.errors
+    # create
+  end
+end
+
+20.times{create_1}
+40.times{create_2}
 
 
 puts "done"

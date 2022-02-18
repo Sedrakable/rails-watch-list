@@ -12,6 +12,7 @@ class BookmarksController < ApplicationController
   # GET /bookmarks/new
   def new
     @bookmark = Bookmark.new
+    @list = List.find(params[:list_id])
 
   end
 
@@ -20,8 +21,9 @@ class BookmarksController < ApplicationController
 
   # POST /bookmarks
   def create
-    raise
     @bookmark = Bookmark.new(bookmark_params)
+    @list = List.find(params[:list_id])
+    @bookmark.list = @list
 
     if @bookmark.save
       redirect_to @bookmark, notice: 'bookmark was successfully created.'
@@ -42,7 +44,7 @@ class BookmarksController < ApplicationController
   # DELETE /bookmarks/1
   def destroy
     @bookmark.destroy
-    redirect_to bookmarks_url, notice: 'bookmark was successfully destroyed.'
+    redirect_to lists_path, notice: 'bookmark was successfully destroyed.'
   end
 
   private
@@ -53,6 +55,6 @@ class BookmarksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bookmark_params
-      params.require(:bookmark).permit(:comment)
+      params.require(:bookmark).permit(:comment, :movie)
     end
 end
