@@ -1,0 +1,21 @@
+<div class="banner">
+  <h1>Save any kind of movies</h1>
+  <h2>Classic</h2>
+</div>
+
+<div class="container">
+  <nav>
+    <h3>My Lists</h3>
+    <%= link_to "Create a movie list", new_list_path, class: "btn btn-primary" %>
+  </nav>
+
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <%= link_to list_path(list), class: "card" do %>
+        <img class="card-img" src="https://source.unsplash.com/random/900×700/?<%= list.name %>" >
+        <div class="card-gradient"></div>
+        <h3><strong><%= list.name %></strong></h3>
+      <% end %>
+    <% end %>
+  </div>
+</div>

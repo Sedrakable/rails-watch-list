@@ -1,0 +1,77 @@
+.cards {
+  @include center($h: flex-start, $v: center);
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 4px 0;
+}
+
+.card {
+  @include center;
+  position: relative;
+  flex-grow: 1;
+  min-width: 180px;
+  max-width: 240px;
+  height: 100px;
+  color: $white;
+  word-wrap: break-word;
+  padding: 0 16px;
+  text-decoration: none;
+  box-shadow: $shadow;
+  img {
+    position: absolute;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1);
+    .card:hover {
+      filter: grayscale(0);
+      transform: scale(2);
+    }
+  }
+}
+
+.card-movie {
+  position: relative;
+  min-width: 400px;
+  max-width: 540px;
+  color: $black;
+  word-wrap: break-word;
+  text-decoration: none;
+  box-shadow: $shadow;
+  img {
+    height: 200px;
+    width: 100%;
+
+    object-fit: cover;
+  }
+}
+
+.card-gradient {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: $gradient;
+}
+
+.card-desc {
+  padding: 4px 16px;
+}
+
+.desc-top {
+  display: flex;
+  i {
+    color: $yellow;
+    transform: translateY(2px);
+  }
+}
+
+.desc-bottom {
+  margin-top: 8px;
+  @include center(space-between, center);
+  div {
+    @include center;
+    gap: 8px;
+  }
+}

@@ -1,0 +1,11 @@
+// Import page-specific CSS files here.
+@import "home";
+.container > nav {
+  background-color: transparent !important;
+}
+
+.banner > .lbl-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

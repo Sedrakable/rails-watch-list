@@ -5,12 +5,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
+    <nav>
+      <%= image_tag 'popcorn.png', class: "logo" %>
+      <div>
+        <%= link_to "My lists", lists_path, class: "btn btn-tab" %>
+        <%= link_to "New list", new_list_path, class: "btn btn-tab" %>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
