@@ -40,7 +40,8 @@ require 'open-uri'
 
 puts 'Deleting db....'
 Movie.destroy_all
-
+List.destroy_all
+Bookmark.destroy_all
 puts 'Creating movies....'
 
 url = 'http://tmdb.lewagon.com/movie/top_rated'
