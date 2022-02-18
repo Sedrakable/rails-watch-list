@@ -26,7 +26,7 @@ class BookmarksController < ApplicationController
     @bookmark.list = @list
 
     if @bookmark.save
-      redirect_to @bookmark, notice: 'bookmark was successfully created.'
+      redirect_to @list, notice: 'bookmark was successfully created.'
     else
       render :new
     end
@@ -55,6 +55,6 @@ class BookmarksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bookmark_params
-      params.require(:bookmark).permit(:comment, :movie)
+      params.require(:bookmark).permit(:comment, :movie_id)
     end
 end
